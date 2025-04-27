@@ -4,7 +4,7 @@ function Item({ name, category }) {
   const [isInCart, setIsInCart] = useState(false);
 
   function handleAddToCartClick() {
-    setIsInCart((isInCart) => !isInCart);
+    setIsInCart((prevIsInCart) => !prevIsInCart); // Toggle cart status
   }
 
   return (
@@ -14,6 +14,7 @@ function Item({ name, category }) {
       <button
         className={isInCart ? "remove" : "add"}
         onClick={handleAddToCartClick}
+        aria-pressed={isInCart} // Provides state info for accessibility
       >
         {isInCart ? "Remove From" : "Add to"} Cart
       </button>
